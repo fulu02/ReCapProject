@@ -6,8 +6,9 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface ICarDal : IEntityRepository<Brand>
+    public interface IBrandDal : IEntityRepository<Brand>
     {
-        List<Brand> GetAll(Func<object, bool> p);
+        List<Brand> GetAll();
+        Brand Get(Func<object, bool> p);
     }
 }

@@ -9,14 +9,14 @@ namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryCarDal : ICarDal
     {
-        List<Car> _cars;
+        List<Brand> _cars;
 
         public int BrandID { get; private set; }
         public object ToList { get; private set; }
 
         public InMemoryCarDal()
         {
-            _cars = new List<Car> {
+            _cars = new List<Brand> {
 
                 new Car{CarID=1, BrandID=1, CarName="Passat", ColorID=1, DailyPrice=350, Description="Manuel", ModelYear=2018},
                  new Car{CarID=2, BrandID=1, CarName="Jetta", ColorID=2, DailyPrice=300, Description="Otomatik Vites", ModelYear=2017},
@@ -27,37 +27,38 @@ namespace DataAccess.Concrete.InMemory
 
             };
         }
-        public void Add(Car car)
+        public void Add(Brand car)
         {
             _cars.Add(car);
         }
 
-        public void Delete(Car car)
+        public void Delete(Brand car)
         {
-            Car carToDelete;
+            Brand carToDelete;
 
             carToDelete = _cars.SingleOrDefault(c => c.CarID == car.CarID);
             _cars.Remove(carToDelete);
         }
 
-        public List<Car> GetAll()
+        public List<Brand> GetAll()
         {
             return _cars;
         }
 
-        public void Update(Car car)
+        public void Update(Brand car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(c => c.CarID == car.CarID);
+            Brand carToUpdate = _cars.SingleOrDefault(c => c.CarID == car.CarID);
             carToUpdate.CarName = car.CarName;
             carToUpdate.BrandID = car.BrandID;
+            carToUpdate.ColorID = car.ColorID;
             carToUpdate.DailyPrice = car.DailyPrice;
             carToUpdate.Description = car.Description;
         }
        
 
-        public List<Car> GetByID(int CarID)
+        public List<Brand> GetByID(int CarID)
         {
-            return (List<Car>)_cars.Where(c => c.BrandID == BrandID);
+            return (List<Brand>)_cars.Where(c => c.BrandID == BrandID);
         }
     }
 }

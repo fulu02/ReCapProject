@@ -1,4 +1,6 @@
-﻿namespace Busines.Concrete
+﻿using System.Collections.Generic;
+
+namespace Busines.Concrete
 {
     public class CarManagerBase
     {

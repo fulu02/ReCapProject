@@ -10,33 +10,44 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
-            {
-                Console.WriteLine(brand.BrandName);
-            }
-        }
+            CarTest();
+            BrandTest();
 
-            private static void CarTest()
-            {
-                CarManager carManager = new CarManager(new EfCarDal());
+        private static void CarTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
 
-                foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+
+            if (result.Success == true)
+            {
+                foreach (var car in result.Data)
                 {
                     Console.WriteLine(car.CarManager + "/" + car.BrandName);
                 }
-
             }
-        
-    }
-}
+            else
+            {
+                Console.WriteLine(result.Messages);
+            }
 
-
-            
-
+            private static void BrandTest()
+            {
+                BrandManager brandManager = new BrandManager(new EfBrandDal);
+                foreach (var brand in brandManager.GetAll())
+                {
+                    Console.WriteLine(brand.BrandName);
+                }
+            }
 
 
 
         }
+
     }
-}
+
+        private static void BrandTest()
+        {
+            throw new NotImplementedException();
+        }
+    }

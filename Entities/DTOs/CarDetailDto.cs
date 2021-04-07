@@ -14,4 +14,4 @@ namespace Entities.DTO
         public short DailyPrice { get; set; }
     }
 }
-// CarName, BrandName, ColorName, DailyPrice. (İpucu: IDto oluşturup 3 tabloya join yazınız)
+

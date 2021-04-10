@@ -1,10 +1,13 @@
 ﻿using Busines.Abstract;
 using Busines.ValidationRules.FluentValidation;
+using Core.Crosscuttingconcerns.Validation;
 using Core.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTO;
 using FluentValidation;
+using RestSharp.Validation;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,20 +26,13 @@ namespace Busines.Concrete
             _carDal = carDal;
         }
 
+
+
+        [Validate]
         public IResult Add(Car Car)
         {
-            if (Car.CarName.Length < 2)
-            {
-                return new ErrorResult(Mesagges.CarNameInvalid);
-            }
-
-            var connect = new ValidationContext<Car>Car);
-            CarValidator carValidator = new CarValidator();
-            var result = carValidator.Validate(context);
-            if (!result.IsValid)
-            {
-                throw new ValidationException(result.Errors);
-            }
+           
+            ValidationTool.Validate(new CarValidator(), car);
 
             _carDal.Add(Car);
 

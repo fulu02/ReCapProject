@@ -1,4 +1,5 @@
 ﻿using Busines.Abstract;
+using Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace Busines.ValidationRules.FluentValidation
         public CarValidator()
         {
             RuleFor(car => car.CarName).NotEmpty();
-            RuleFor(car => car.CarName).MinimumLenght(3);
+            RuleFor(car => car.CarName).MinimumLength(3);
             RuleFor(car => car.DailyPrice).NotEmpty();
-            RuleFor(car => car.DailyPrice).GreterThan();
-            RuleFor(car => car.DailyPrice).GreterThanOrEquealTo(5).When(Car => Car.BrandId == 2);
+            RuleFor(car => car.DailyPrice).GreaterThan();
+            RuleFor(car => car.DailyPrice).GreaterThanOrEqualTo(5).When(Car => Car.BrandId == 2);
         }
 
         internal object Validate(object context)

@@ -16,5 +16,15 @@ namespace Core.Crosscuttingconcerns.Validation
                 throw new ValidationException(result.Errors);
             }
         }
+
+        public static void Validate(global::Busines.ValidationRules.FluentValidation.CarValidator carValidators, object car)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void Validate(global::Busines.ValidationRules.FluentValidation.CarValidator carValidators, object car)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

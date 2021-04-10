@@ -18,6 +18,7 @@ namespace Busines.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
+        private object car;
 
         public object Mesagges { get; private set; }
 
@@ -53,7 +54,7 @@ namespace Busines.Concrete
 
         public IDataResult<Car> GetAllBrandID(int Id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == Id);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == Id));
         }
 
         public IDataResult<Car> GetById(int carId)
@@ -70,6 +71,20 @@ namespace Busines.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailDtos());
         }
 
+        public IDataResult<List<Car>> GetAllBrandId(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult Update(Car car)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult Delete(Car car)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
     

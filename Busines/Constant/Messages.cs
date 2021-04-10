@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Busines.Constant
@@ -39,5 +40,17 @@ namespace Busines.Constant
         public static string RentalAdded = "Araba Kiralandı";
 
         public static string RentalNotAdded = "Araba Kiralanmadı";
+
+        public static string CarImageAdded = "Araba resmi eklendi";
+
+        public static string CarImageDeleted = "Araba resmi silindi";
+
+        public static string CarImageUpdated = "Araba resmi güncellendi";
+
+        public static string FailedCarImageAdd = "En fazla 5 araba resmi eklenebilir";
+
+        public static string AuthorizationDenied = "Yetkilendirme Reddedildi";
+
+        
     }
 }

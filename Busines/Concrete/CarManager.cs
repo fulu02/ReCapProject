@@ -1,11 +1,14 @@
 ﻿using Busines.Abstract;
+using Busines.ValidationRules.FluentValidation;
 using Core.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTO;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static Core.Results.ErrorDataResult;
 
 namespace Busines.Concrete
 {
@@ -19,6 +22,26 @@ namespace Busines.Concrete
         {
             _carDal = carDal;
         }
+
+        public IResult Add(Car Car)
+        {
+            if (Car.CarName.Length < 2)
+            {
+                return new ErrorResult(Mesagges.CarNameInvalid);
+            }
+
+            var connect = new ValidationContext<Car>Car);
+            CarValidator carValidator = new CarValidator();
+            var result = carValidator.Validate(context);
+            if (!result.IsValid)
+            {
+                throw new ValidationException(result.Errors);
+            }
+
+            _carDal.Add(Car);
+
+            return new SuccessResult(Mesagges.CarAdded);
+        }
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour == 22)
@@ -30,17 +53,7 @@ namespace Busines.Concrete
         }
 
 
-        public IResult Add(Car car)
-        {
-            if (car.CarName.Length < 2)
-            {
-                return new ErrorResult(Mesagges.CarNameInvalid);
-            }
-
-            _carDal.Add(car);
-
-            return new SuccessResult(Mesagges.CarAdded);
-        }
+      
 
         public IDataResult<Car> GetAllBrandID(int Id)
         {

@@ -12,8 +12,10 @@ namespace Busines.Abstract
         IDataResult<List<Car>> GetAll();
         IDataResult<List<Car>> GetAllBrandId(int Id);
         IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max);
-        IDataResult<List<CarDetailDto>> GetProductDetailDtos();
+        IDataResult<List<CarDetailDto>> GetCarDetailDtos();
         IDataResult<Car> GetById(int carId);
         IResult Add(Car car);
+        IResult Update(Car car);
+        IResult Delete(Car car);
     }
 }
